@@ -117,7 +117,7 @@ const experiences = [
 const projects = [
   {
     name: "ONE 31",
-    period: "Nov 2025 - Present",
+    period: "Nov 2025 - Apr 2026",
     stack: ["QA collaboration", "UAT", "Production release"],
     summary:
       "Diagnosed and resolved 125 UAT defects to support a stable production release and improve system quality.",
