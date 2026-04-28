@@ -82,6 +82,16 @@ html {
 }
 
 @media (max-width: 767px) {
+  .experience-timeline.p-timeline,
+  .experience-timeline .p-timeline-event {
+    align-items: stretch;
+  }
+
+  .experience-timeline .p-timeline-event {
+    flex-direction: row !important;
+    min-height: 0;
+  }
+
   .experience-timeline .p-timeline-event-opposite {
     display: none;
   }
@@ -89,11 +99,19 @@ html {
   .experience-timeline .p-timeline-event-content,
   .experience-timeline .p-timeline-event:nth-child(even)
     .p-timeline-event-content {
-    padding: 0 0 2rem 1.25rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0 0 2rem 1rem;
   }
 
   .experience-timeline .p-timeline-event-separator {
-    padding-inline: 0.25rem;
+    flex: 0 0 auto;
+    order: 0;
+    padding-inline: 0.35rem;
+  }
+
+  .experience-timeline .p-timeline-event-content {
+    order: 1;
   }
 
   .experience-timeline .p-timeline-event:nth-child(even)

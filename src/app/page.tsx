@@ -97,7 +97,7 @@ const skillGroups = [
 
 const experiences = [
   {
-    date: "Jun 2024 - Present",
+    date: "Jun 2024 - Apr 2026",
     title: "Software Developer",
     company: "Sirisoft Public Company Limited",
     location: "Bangkok, Thailand",
@@ -316,12 +316,15 @@ export default function Home() {
               value={experiences}
               align="alternate"
               marker={() => (
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-sky-200 bg-white text-sky-700 shadow-sm ring-4 ring-sky-50">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-200 bg-white text-sm text-sky-700 shadow-sm ring-4 ring-sky-50 sm:h-11 sm:w-11 sm:text-base">
                   <i className="pi pi-code" />
                 </span>
               )}
               content={(item) => (
                 <article className="rounded-xl border border-slate-200 bg-slate-50/80 p-5 text-left shadow-sm transition hover:border-sky-200 hover:bg-white hover:shadow-md sm:p-6">
+                  <span className="mb-3 inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm md:hidden">
+                    {item.date}
+                  </span>
                   <p className="text-sm font-semibold text-sky-700">
                     {item.company}
                   </p>
