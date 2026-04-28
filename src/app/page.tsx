@@ -178,12 +178,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f8fb] text-slate-950">
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3.5 sm:px-8">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3.5 sm:px-6 lg:px-8">
           <a
             href="#top"
             className="group flex items-center gap-3"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-sm font-semibold text-white shadow-sm transition group-hover:bg-sky-700">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-950 text-xs font-semibold text-white shadow-sm transition group-hover:bg-sky-700 sm:h-10 sm:w-10 sm:text-sm">
               TP
             </span>
             <span className="hidden leading-tight sm:block">
@@ -208,34 +208,47 @@ export default function Home() {
           </div>
           <a
             href={`mailto:${contact.email}`}
-            className="inline-flex items-center gap-3 rounded-xl border border-slate-900 bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-md"
+            className="inline-flex items-center gap-2.5 rounded-xl border border-slate-900 bg-slate-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-md sm:px-4"
           >
             <span className="hidden sm:inline">Hire me</span>
             <i className="pi pi-send text-sm sm:order-first" />
           </a>
         </nav>
+        <div className="border-t border-slate-100 px-4 py-2 md:hidden">
+          <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {navItems.map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                className="shrink-0 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-600 shadow-sm"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
       </header>
 
       <main id="top">
         <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-24">
             <div className="flex flex-col justify-center">
               <div className="mb-5 flex flex-wrap gap-2">
                 <Badge>Software Developer</Badge>
                 <Badge>Full Stack</Badge>
                 <Badge>Security-minded</Badge>
               </div>
-              <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
                 Building secure enterprise web systems for finance, banking,
                 and business platforms.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:mt-6 sm:text-lg">
                 I am Thirapong Pinkaew, a software developer experienced in
                 Angular, Next.js, Spring Boot, .NET, and SQL platforms. I turn
                 complex requirements into stable production software, from
                 reusable frontend libraries to encrypted batch systems.
               </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="mt-8 grid gap-3 sm:mt-9 sm:flex sm:flex-wrap">
                 <HeroAction
                   href="#projects"
                   icon="pi pi-briefcase"
@@ -256,13 +269,13 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className="rounded-lg border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10 lg:p-12">
+            <aside className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-8 lg:p-12">
               <div className="flex h-full flex-col justify-between gap-8">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 sm:text-sm">
                     Core profile
                   </p>
-                  <h2 className="mt-6 text-2xl font-semibold leading-snug text-slate-950 sm:text-3xl">
+                  <h2 className="mt-4 text-2xl font-semibold leading-snug text-slate-950 sm:mt-6 sm:text-3xl">
                     Frontend precision with backend delivery range.
                   </h2>
                   <p className="mt-5 text-base leading-8 text-slate-600">
@@ -291,13 +304,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+        <section id="experience" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <SectionHeading
             eyebrow="Experience"
             title="Production work across enterprise teams"
             description="Hands-on delivery in full-stack roles, with repeated exposure to banking, asset management, telecom, public-sector, and mobile systems."
           />
-          <div className="mt-8 rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <div className="mt-8 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-8 lg:p-10">
             <Timeline
               className="experience-timeline"
               value={experiences}
@@ -308,15 +321,15 @@ export default function Home() {
                 </span>
               )}
               content={(item) => (
-                <article className="rounded-xl border border-slate-200 bg-slate-50/80 p-6 text-left shadow-sm transition hover:border-sky-200 hover:bg-white hover:shadow-md">
+                <article className="rounded-xl border border-slate-200 bg-slate-50/80 p-5 text-left shadow-sm transition hover:border-sky-200 hover:bg-white hover:shadow-md sm:p-6">
                   <p className="text-sm font-semibold text-sky-700">
                     {item.company}
                   </p>
-                  <h3 className="mt-1 text-xl font-semibold text-slate-950">
+                  <h3 className="mt-1 text-lg font-semibold text-slate-950 sm:text-xl">
                     {item.title}
                   </h3>
                   <p className="mt-1 text-sm text-slate-500">{item.location}</p>
-                  <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600">
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                     {item.detail}
                   </p>
                 </article>
@@ -331,26 +344,26 @@ export default function Home() {
         </section>
 
         <section id="projects" className="border-y border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             <SectionHeading
               eyebrow="Selected projects"
               title="Work that balances UI, APIs, data, and release pressure"
               description="A practical mix of frontend implementation, backend services, secure processing, support, and deployment."
             />
-            <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
               {projects.map((project) => (
                 <article
                   key={project.name}
-                  className="h-full rounded-lg border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md"
+                  className="h-full rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md sm:p-7"
                 >
                   <div className="flex h-full flex-col">
                     <p className="text-sm font-semibold text-sky-700">
                       {project.period}
                     </p>
-                    <h3 className="mt-2 text-xl font-semibold text-slate-950">
+                    <h3 className="mt-2 text-lg font-semibold text-slate-950 sm:text-xl">
                       {project.name}
                     </h3>
-                    <p className="mt-4 flex-1 text-base leading-8 text-slate-600">
+                    <p className="mt-4 flex-1 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                       {project.summary}
                     </p>
                     <div className="mt-5 flex flex-wrap gap-2">
@@ -365,21 +378,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+        <section id="skills" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <SectionHeading
             eyebrow="Skills"
             title="A stack built for practical delivery"
             description="Strongest around Angular and TypeScript, with backend depth in Spring Boot and .NET."
           />
-          <div className="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
+            <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400" />
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3 sm:items-center">
                 <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-950 text-white">
                   <i className="pi pi-sparkles" />
                 </span>
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-950">
+                  <h3 className="text-lg font-semibold text-slate-950 sm:text-xl">
                     Main toolkit
                   </h3>
                   <p className="mt-1 text-sm leading-6 text-slate-500">
@@ -398,9 +411,9 @@ export default function Home() {
               {skillGroups.map((group) => (
                 <article
                   key={group.title}
-                  className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-sky-200 hover:shadow-md sm:p-7"
+                  className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md sm:p-7"
                 >
-                  <div className="flex gap-4">
+                  <div className="flex flex-col gap-4 sm:flex-row">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-700 ring-1 ring-sky-100">
                       <i className={group.icon} />
                     </span>
@@ -430,7 +443,7 @@ export default function Home() {
         </section>
 
         <section id="education" className="border-y border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             <SectionHeading
               eyebrow="Education"
               title="Information technology foundation with security specialization"
@@ -440,15 +453,15 @@ export default function Home() {
               {education.map((item) => (
                 <article
                   key={item.school}
-                  className="rounded-lg border border-slate-200 bg-white p-7 shadow-sm sm:p-8"
+                  className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-8"
                 >
                   <p className="text-sm font-semibold text-sky-700">
                     {item.date}
                   </p>
-                  <h3 className="mt-2 text-xl font-semibold text-slate-950">
+                  <h3 className="mt-2 text-lg font-semibold text-slate-950 sm:text-xl">
                     {item.school}
                   </h3>
-                  <p className="mt-4 text-base leading-8 text-slate-600">
+                  <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                     {item.degree}
                   </p>
                   {item.note ? (
@@ -462,18 +475,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
+        <section id="contact" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 text-white shadow-xl shadow-slate-200/70">
             <div className="grid lg:grid-cols-[1fr_25rem]">
-              <div className="p-8 sm:p-10 lg:p-12">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
+              <div className="p-5 sm:p-10 lg:p-12">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:text-sm">
                   Contact
                 </p>
-                <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">
+                <h2 className="mt-4 max-w-3xl text-2xl font-semibold leading-tight sm:text-4xl">
                   Let&apos;s build reliable software for real business
                   workflows.
                 </h2>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
                   Available for software developer roles focused on full-stack
                   web development, enterprise frontend systems, secure backend
                   services, and production support.
@@ -482,7 +495,7 @@ export default function Home() {
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
                   <a
                     href={`mailto:${contact.email}`}
-                    className="group rounded-xl border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan-300/50 hover:bg-white/[0.07]"
+                    className="group rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-300/50 hover:bg-white/[0.07] sm:p-5"
                   >
                     <div className="flex items-start gap-4">
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-200 ring-1 ring-cyan-300/20">
@@ -501,7 +514,7 @@ export default function Home() {
 
                   <a
                     href={`tel:${contact.phone.replaceAll(" ", "")}`}
-                    className="group rounded-xl border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan-300/50 hover:bg-white/[0.07]"
+                    className="group rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-300/50 hover:bg-white/[0.07] sm:p-5"
                   >
                     <div className="flex items-start gap-4">
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-200 ring-1 ring-cyan-300/20">
@@ -520,7 +533,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="border-t border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:border-l lg:border-t-0">
+              <div className="border-t border-white/10 bg-white/[0.03] p-5 sm:p-8 lg:border-l lg:border-t-0">
                 <div className="grid gap-3">
                   <ContactAction
                     href={`mailto:${contact.email}`}
@@ -584,7 +597,7 @@ function HeroAction({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      className={`group inline-flex min-h-12 items-center justify-center gap-3 rounded-xl border px-5 py-3 text-sm font-semibold transition ${classes}`}
+      className={`group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border px-5 py-3 text-sm font-semibold transition sm:w-auto ${classes}`}
     >
       <span
         className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base transition ${iconClasses}`}
@@ -610,14 +623,14 @@ function ContactAction({
   return (
     <a
       href={href}
-      className="group rounded-xl border border-white/10 bg-white/[0.05] p-5 transition hover:-translate-y-0.5 hover:border-cyan-300/50 hover:bg-white/[0.08] hover:shadow-lg hover:shadow-black/20"
+      className="group rounded-xl border border-white/10 bg-white/[0.05] p-4 transition hover:-translate-y-0.5 hover:border-cyan-300/50 hover:bg-white/[0.08] hover:shadow-lg hover:shadow-black/20 sm:p-5"
     >
-      <div className="flex items-center gap-4">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white text-slate-950 transition group-hover:bg-cyan-200">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-slate-950 transition group-hover:bg-cyan-200 sm:h-12 sm:w-12">
           <i className={icon} />
         </span>
         <div>
-          <p className="text-base font-semibold text-white">{title}</p>
+          <p className="text-sm font-semibold text-white sm:text-base">{title}</p>
           <p className="mt-1 text-sm text-slate-400">{description}</p>
         </div>
       </div>
@@ -636,20 +649,20 @@ function SectionHeading({
 }) {
   return (
     <div className="max-w-3xl">
-      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700 sm:text-sm">
         {eyebrow}
       </p>
-      <h2 className="mt-3 text-3xl font-semibold leading-tight text-slate-950 sm:text-4xl">
+      <h2 className="mt-3 text-2xl font-semibold leading-tight text-slate-950 sm:text-4xl">
         {title}
       </h2>
-      <p className="mt-4 text-base leading-8 text-slate-600">{description}</p>
+      <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">{description}</p>
     </div>
   );
 }
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700">
+    <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 sm:text-sm">
       {children}
     </span>
   );
@@ -657,7 +670,7 @@ function Badge({ children }: { children: React.ReactNode }) {
 
 function SkillPill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-sm font-medium text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700">
+    <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700 sm:px-3.5 sm:text-sm">
       {children}
     </span>
   );
