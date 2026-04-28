@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f8fb;
+  --foreground: #111827;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.p-button {
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 0.85rem;
+}
+
+.p-button .p-button-icon-left {
+  margin-right: 0.85rem;
+}
+
+.p-button .p-button-icon-right {
+  margin-left: 0.85rem;
+}
+
+.p-button .p-button-label {
+  padding-left: 0.1rem;
+}
+
+.contact-action .p-button {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0.85rem 1rem;
+}
+
+.experience-timeline .p-timeline-event-opposite {
+  min-width: 9rem;
+  padding: 0 2.75rem 2.5rem 0;
+}
+
+.experience-timeline .p-timeline-event-content {
+  padding: 0 0 2.5rem 2.75rem;
+}
+
+.experience-timeline .p-timeline-event-separator {
+  padding-inline: 0.75rem;
+}
+
+.experience-timeline .p-timeline-event-connector {
+  background: linear-gradient(180deg, #bae6fd, #e2e8f0);
+  width: 2px;
+}
+
+.experience-timeline .p-timeline-event:nth-child(even)
+  .p-timeline-event-opposite {
+  padding: 0 0 2.5rem 2.75rem;
+}
+
+.experience-timeline .p-timeline-event:nth-child(even)
+  .p-timeline-event-content {
+  padding: 0 2.75rem 2.5rem 0;
+}
+
+.experience-timeline .p-timeline-event:nth-child(even)
+  .p-timeline-event-content
+  article {
+  text-align: right;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .experience-timeline .p-timeline-event-opposite {
+    display: none;
+  }
+
+  .experience-timeline .p-timeline-event-content,
+  .experience-timeline .p-timeline-event:nth-child(even)
+    .p-timeline-event-content {
+    padding: 0 0 2rem 1.25rem;
+  }
+
+  .experience-timeline .p-timeline-event-separator {
+    padding-inline: 0.25rem;
+  }
+
+  .experience-timeline .p-timeline-event:nth-child(even)
+    .p-timeline-event-content
+    article {
+    text-align: left;
+    margin-left: 0;
+  }
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link,
+.p-accordion .p-accordion-content {
+  border-color: #e5e7eb;
 }
