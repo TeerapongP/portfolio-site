@@ -97,6 +97,12 @@ const skillGroups = [
 
 const experiences = [
   {
+    date: "05 May 2026 - Present",
+    title: "Software Engineer",
+    company: "Ascend Group",
+    location: "Bangkok, Thailand",
+  },
+  {
     date: "Jun 2024 - Apr 2026",
     title: "Software Developer",
     company: "Sirisoft Public Company Limited",
@@ -165,12 +171,80 @@ const education = [
     degree:
       "Master of Science in Digital Network and Information Security Management",
     date: "May 2025 - Present",
+    note: "In progress · Current GPA 3.25",
   },
   {
     school: "Kasetsart University, Kamphaeng Saen Campus",
     degree: "Bachelor of Science in Information Technology Infrastructure",
     date: "Graduated 2023",
     note: "GPA 3.07",
+  },
+];
+
+const graduateCoursework = [
+  {
+    term: "Semester 1 / 2568",
+    gpa: "3.00",
+    credits: "9",
+    cumulativeGpa: "3.00",
+    courses: [
+      {
+        code: "070315108",
+        name: "Digital Network Technology",
+        grade: "B",
+        credits: "3",
+        description:
+          "Covers the fundamentals of digital network technology, including network protocols, routing protocols, and multimedia streaming. The course also introduces IoT fundamentals, basic cryptography, foundational security concepts, and cloud technology.",
+      },
+      {
+        code: "070315109",
+        name: "Digital Network and Information Security",
+        grade: "C+",
+        credits: "3",
+        description:
+          "Focuses on cybersecurity threats, attacks, vulnerabilities, security tools, system architecture, identity management, and access control. It also covers risk management, cryptography, public key infrastructure, data privacy, data governance, and cybersecurity culture.",
+      },
+      {
+        code: "070315213",
+        name: "Big Data Analytics in Cyber Security",
+        grade: "B+",
+        credits: "3",
+        description:
+          "Explores big data analytics for cybersecurity, including cyberattack frameworks, incident management, intrusion detection, and intrusion prevention. The course also applies machine learning and AI to data preparation, exploration, dimensionality reduction, and security measurement.",
+      },
+    ],
+  },
+  {
+    term: "Semester 2 / 2568",
+    gpa: "3.50",
+    credits: "9",
+    cumulativeGpa: "3.25",
+    courses: [
+      {
+        code: "070315107",
+        name: "Information System Auditing",
+        grade: "B+",
+        credits: "3",
+        description:
+          "Covers information system auditing processes, governance, risk, compliance, and IT management. The course includes system acquisition, development, implementation, operation, maintenance, service management, and protection of information assets under relevant laws, standards, frameworks, and best practices.",
+      },
+      {
+        code: "070315215",
+        name: "Ethical Hacking for Cyber Security",
+        grade: "B+",
+        credits: "3",
+        description:
+          "Covers information and network security tools, along with security assessment for wired networks, wireless networks, and web applications. The course emphasizes countermeasures, ethical hacking practices, and related legal considerations.",
+      },
+      {
+        code: "070315309",
+        name: "Project Management for Network and Information Security",
+        grade: "B+",
+        credits: "3",
+        description:
+          "Focuses on project management for network and information security work. Topics include project planning, cost estimation, human resources, communication, quality management, procurement planning, project monitoring, control, and project closing.",
+      },
+    ],
   },
 ];
 
@@ -332,9 +406,11 @@ export default function Home() {
                     {item.title}
                   </h3>
                   <p className="mt-1 text-sm text-slate-500">{item.location}</p>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                    {item.detail}
-                  </p>
+                  {item.detail ? (
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+                      {item.detail}
+                    </p>
+                  ) : null}
                 </article>
               )}
               opposite={(item) => (
@@ -474,6 +550,62 @@ export default function Home() {
                   ) : null}
                 </article>
               ))}
+            </div>
+
+            <div className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-8">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-sky-700">
+                    Graduate coursework
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold text-slate-950 sm:text-2xl">
+                    Digital Network and Security study record
+                  </h3>
+                </div>
+                <p className="text-sm font-semibold text-slate-500">
+                  Current cumulative GPA: 3.25
+                </p>
+              </div>
+
+              <div className="mt-6 grid items-stretch gap-4 lg:grid-cols-2">
+                {graduateCoursework.map((semester) => (
+                  <article
+                    key={semester.term}
+                    className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                      <h4 className="text-base font-semibold text-slate-950">
+                        {semester.term}
+                      </h4>
+                    </div>
+
+                    <div className="mt-4 grid flex-1 gap-3 lg:grid-rows-3">
+                      {semester.courses.map((course) => (
+                        <article
+                          key={course.code}
+                          className="flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-sky-200 hover:bg-white hover:shadow-sm"
+                        >
+                          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                            <div className="min-w-0">
+                              <h5 className="text-sm font-semibold leading-6 text-slate-950 sm:text-base">
+                                {course.name}
+                              </h5>
+                            </div>
+                            <div className="flex shrink-0 flex-wrap gap-2">
+                              <span className="inline-flex min-w-12 items-center justify-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-100">
+                                {course.grade}
+                              </span>
+                            </div>
+                          </div>
+                          <p className="mt-3 text-sm leading-7 text-slate-600">
+                            {course.description}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
