@@ -1,5 +1,8 @@
 "use client";
 
+import PortraitHero from "./portrait-hero";
+import ProjectCard from "./project-card";
+
 import { Timeline } from "primereact/timeline";
 
 const contact = {
@@ -9,8 +12,8 @@ const contact = {
 };
 
 const navItems = [
-  ["Experience", "#experience"],
   ["Projects", "#projects"],
+  ["Experience", "#experience"],
   ["Skills", "#skills"],
   ["Education", "#education"],
   ["Contact", "#contact"],
@@ -31,6 +34,7 @@ const skills = [
   "Nuxt 3",
   "Tailwind CSS",
   "PrimeNG",
+  "Kotlin",
   "Java",
   "Spring Boot",
   "Spring Batch",
@@ -68,6 +72,7 @@ const skillGroups = [
     icon: "pi pi-server",
     description: "REST APIs, batch jobs, service integration, and enterprise modules.",
     items: [
+      "Kotlin",
       "Java",
       "Spring Boot",
       "Spring Batch",
@@ -89,6 +94,9 @@ const skillGroups = [
       "SQL",
       "AES-256",
       "Git",
+      "Robot Framework",
+      "Grafana",
+      "Unit testing",
       "On-premise deploy",
       "App Store release support",
     ],
@@ -99,8 +107,9 @@ const experiences = [
   {
     date: "05 May 2026 - Present",
     title: "Software Engineer",
-    company: "Ascend Group",
+    company: "Ascend Money",
     location: "Bangkok, Thailand",
+    detail: "Develop backend services with Kotlin and Spring, including REST APIs, batch jobs, and unit tests. Build automated tests with Robot Framework and Grafana dashboards for system and transaction monitoring.",
   },
   {
     date: "Jun 2024 - Apr 2026",
@@ -162,6 +171,39 @@ const projects = [
     stack: ["Angular", "Nuxt 3", ".NET", "ASP.NET", "Spring Boot"],
     summary:
       "Delivered and supported back-office and banking web systems, focusing on UI implementation, troubleshooting, performance, and reliability.",
+  },
+];
+
+const featuredProjects = [
+  {
+    ...projects[0],
+    metric: "125",
+    metricLabel: "UAT defects resolved",
+    role: "Defect resolution & QA collaboration",
+    challenge: "Prepare ONE 31 for a stable production release.",
+    contribution: "Diagnosed and resolved defects during user acceptance testing, working with QA on release readiness.",
+    outcome: "Resolved 125 UAT defects to support production stability.",
+    steps: ["Diagnose", "Resolve", "Release support"],
+  },
+  {
+    ...projects[3],
+    metric: "1,500+",
+    metricLabel: "sub-modules across the KTAM platform",
+    role: "Frontend development",
+    challenge: "Deliver consistent interfaces across a large asset management platform.",
+    contribution: "Implemented Angular UI components from client specifications, built reusable shared libraries, and debugged application issues.",
+    outcome: "Shared libraries supported consistent UI behavior across the platform.",
+    steps: ["Client specifications", "Shared libraries", "Consistent UI"],
+  },
+  {
+    ...projects[1],
+    metric: "UI + API",
+    metricLabel: "full-stack banking delivery",
+    role: "Full-stack development",
+    challenge: "Connect customer experience workflows with secure backend services.",
+    contribution: "Built Spring Boot REST APIs, integrated PostgreSQL storage, and implemented Angular file management with role-based access and error handling.",
+    outcome: "Delivered upload/download workflows and integrated frontend components with backend services.",
+    steps: ["Angular interface", "Spring Boot APIs", "PostgreSQL"],
   },
 ];
 
@@ -250,8 +292,8 @@ const graduateCoursework = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f7f8fb] text-slate-950">
-      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/85 backdrop-blur-xl">
+    <div className="portfolio-site min-h-screen">
+      <header className="portfolio-header sticky top-0 z-40 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3.5 sm:px-6 lg:px-8">
           <a
             href="#top"
@@ -282,9 +324,10 @@ export default function Home() {
           </div>
           <a
             href={`mailto:${contact.email}`}
+            aria-label="Email Thirapong Pinkaew"
             className="inline-flex items-center gap-2.5 rounded-xl border border-slate-900 bg-slate-950 px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-md sm:px-4"
           >
-            <span className="hidden sm:inline">Hire me</span>
+            <span className="hidden sm:inline">Contact me</span>
             <i className="pi pi-send text-sm sm:order-first" />
           </a>
         </nav>
@@ -304,133 +347,46 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-24">
-            <div className="flex flex-col justify-center">
-              <div className="mb-5 flex flex-wrap gap-2">
-                <Badge>Software Developer</Badge>
-                <Badge>Full Stack</Badge>
-                <Badge>Security-minded</Badge>
-              </div>
-              <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Building secure enterprise web systems for finance, banking,
-                and business platforms.
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:mt-6 sm:text-lg">
-                I am Thirapong Pinkaew, a software developer experienced in
-                Angular, Next.js, Spring Boot, .NET, and SQL platforms. I turn
-                complex requirements into stable production software, from
-                reusable frontend libraries to encrypted batch systems.
-              </p>
-              <div className="mt-8 grid gap-3 sm:mt-9 sm:flex sm:flex-wrap">
-                <HeroAction
-                  href="#projects"
-                  icon="pi pi-briefcase"
-                  label="View projects"
-                  variant="primary"
-                />
-                <HeroAction
-                  href="/thirapong-pinkaew-resume.pdf"
-                  icon="pi pi-download"
-                  label="Download resume"
-                />
-                <HeroAction
-                  href={contact.github}
-                  icon="pi pi-github"
-                  label="GitHub"
-                  external
-                />
-              </div>
-            </div>
-
-            <aside className="rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-8 lg:p-12">
-              <div className="flex h-full flex-col justify-between gap-8">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 sm:text-sm">
-                    Core profile
-                  </p>
-                  <h2 className="mt-4 text-2xl font-semibold leading-snug text-slate-950 sm:mt-6 sm:text-3xl">
-                    Frontend precision with backend delivery range.
-                  </h2>
-                  <p className="mt-5 text-base leading-8 text-slate-600">
-                    Comfortable across client-facing enterprise modules, REST
-                    API design, database integration, on-premise deployment, and
-                    production release support.
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {highlights.map((item) => (
-                    <div
-                      key={item.label}
-                      className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
-                    >
-                      <div className="text-2xl font-semibold text-slate-950">
-                        {item.value}
-                      </div>
-                      <div className="mt-1 text-sm leading-5 text-slate-500">
-                        {item.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <section id="experience" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-          <SectionHeading
-            eyebrow="Experience"
-            title="Production work across enterprise teams"
-            description="Hands-on delivery in full-stack roles, with repeated exposure to banking, asset management, telecom, public-sector, and mobile systems."
-          />
-          <div className="mt-8 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-8 lg:p-10">
-            <Timeline
-              className="experience-timeline"
-              value={experiences}
-              align="alternate"
-              marker={() => (
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-200 bg-white text-sm text-sky-700 shadow-sm ring-4 ring-sky-50 sm:h-11 sm:w-11 sm:text-base">
-                  <i className="pi pi-code" />
-                </span>
-              )}
-              content={(item) => (
-                <article className="rounded-xl border border-slate-200 bg-slate-50/80 p-5 text-left shadow-sm transition hover:border-sky-200 hover:bg-white hover:shadow-md sm:p-6">
-                  <span className="mb-3 inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm md:hidden">
-                    {item.date}
-                  </span>
-                  <p className="text-sm font-semibold text-sky-700">
-                    {item.company}
-                  </p>
-                  <h3 className="mt-1 text-lg font-semibold text-slate-950 sm:text-xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-slate-500">{item.location}</p>
-                  {item.detail ? (
-                    <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                      {item.detail}
-                    </p>
-                  ) : null}
-                </article>
-              )}
-              opposite={(item) => (
-                <span className="inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-500 shadow-sm">
-                  {item.date}
-                </span>
-              )}
-            />
-          </div>
-        </section>
+        <PortraitHero />
+        <div className="profile-highlights">
+          {highlights.map((item) => <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>)}
+        </div>
 
         <section id="projects" className="border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             <SectionHeading
               eyebrow="Selected projects"
-              title="Work that balances UI, APIs, data, and release pressure"
-              description="A practical mix of frontend implementation, backend services, secure processing, support, and deployment."
+              title="Selected work. Concrete contributions."
+              description="Frontend delivery, backend integration, and release support for enterprise teams. Here is what I contributed."
             />
-            <div className="mt-8 grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {projects.map((project) => (
+            <div className="featured-projects">
+              {featuredProjects.map((project, index) => (
+                <ProjectCard key={project.name}>
+                  <div className="case-visual">
+                    <span className="case-index">0{index + 1} / {project.role}</span>
+                    <strong>{project.metric}</strong>
+                    <span className="case-metric-label">{project.metricLabel}</span>
+                    <ol className="case-flow" aria-label={project.name + " contribution overview"}>
+                      {project.steps.map((step) => <li key={step}>{step}</li>)}
+                    </ol>
+                  </div>
+                  <div className="case-body">
+                    <p className="case-period">{project.period}</p>
+                    <h3>{project.name}</h3>
+                    <dl className="case-details">
+                      <div><dt>The challenge</dt><dd>{project.challenge}</dd></div>
+                      <div><dt>My contribution</dt><dd>{project.contribution}</dd></div>
+                      <div><dt>The result</dt><dd>{project.outcome}</dd></div>
+                    </dl>
+                    <div className="case-stack">{project.stack.map((item) => <SkillPill key={item}>{item}</SkillPill>)}</div>
+                  </div>
+                </ProjectCard>
+              ))}
+            </div>
+            <div className="project-followup"><p>More detail on my responsibilities and work history.</p><a href="/cv-thirapong-pinkaew.pdf" download>Download full CV <span aria-hidden="true">↗</span></a></div>
+            <h3 className="mt-10 text-xl font-semibold text-slate-950">More project experience</h3>
+            <div className="mt-6 grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {projects.filter((project) => !featuredProjects.some((featured) => featured.name === project.name)).map((project) => (
                 <article
                   key={project.name}
                   className="h-full rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md sm:p-7"
@@ -457,17 +413,61 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="experience" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <SectionHeading
+            eyebrow="Experience"
+            title="Production work across enterprise teams"
+            description="Hands-on delivery in full-stack roles, with repeated exposure to banking, asset management, telecom, public-sector, and mobile systems."
+          />
+          <div className="experience-stage mt-8 rounded-lg border border-slate-200 p-4 sm:p-8 lg:p-10">
+            <Timeline
+              className="experience-timeline"
+              value={experiences}
+              align="alternate"
+              marker={() => (
+                <span className="timeline-node flex h-9 w-9 items-center justify-center rounded-full border border-sky-200 bg-white text-sm text-sky-700 shadow-sm ring-4 ring-sky-50 sm:h-11 sm:w-11 sm:text-base">
+                  <i className="pi pi-code" />
+                </span>
+              )}
+              content={(item) => (
+                <ProjectCard variant="experience">
+                  <span className="timeline-date mb-3 inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm md:hidden">
+                    {item.date}
+                  </span>
+                  <p className="text-sm font-semibold text-sky-700">
+                    {item.company}
+                  </p>
+                  <h3 className="mt-1 text-lg font-semibold text-slate-950 sm:text-xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-500">{item.location}</p>
+                  {item.detail ? (
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+                      {item.detail}
+                    </p>
+                  ) : null}
+                </ProjectCard>
+              )}
+              opposite={(item) => (
+                <span className="timeline-date inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-500 shadow-sm">
+                  {item.date}
+                </span>
+              )}
+            />
+          </div>
+        </section>
+
         <section id="skills" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <SectionHeading
             eyebrow="Skills"
             title="A stack built for practical delivery"
-            description="Strongest around Angular and TypeScript, with backend depth in Spring Boot and .NET."
+            description="Angular and TypeScript for frontend delivery; Kotlin, Spring Boot, and .NET for backend services, with automated testing and monitoring."
           />
           <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-6">
-            <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400" />
-              <div className="flex items-start gap-3 sm:items-center">
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-950 text-white">
+            <ProjectCard variant="toolkit">
+              <div className="toolkit-light-bar" aria-hidden="true" />
+              <div className="skills-card-heading flex items-start gap-3 sm:items-center">
+                <span className="skills-icon skills-icon-primary flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-slate-950 text-white">
                   <i className="pi pi-sparkles" />
                 </span>
                 <div>
@@ -479,43 +479,40 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="mt-7 flex flex-wrap gap-2.5">
+              <div className="skills-chips mt-7 flex flex-wrap gap-2.5">
                 {skills.map((skill) => (
                   <SkillPill key={skill}>{skill}</SkillPill>
                 ))}
               </div>
-            </div>
+            </ProjectCard>
 
-            <div className="grid gap-4">
+            <div className="grid gap-6">
               {skillGroups.map((group) => (
-                <article
-                  key={group.title}
-                  className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-sky-200 hover:shadow-md sm:p-7"
-                >
-                  <div className="flex flex-col gap-4 sm:flex-row">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-700 ring-1 ring-sky-100">
+                <ProjectCard key={group.title} variant="skill">
+                  <div className="skills-group-content flex flex-col gap-4 sm:flex-row">
+                    <span className="skills-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-700 ring-1 ring-sky-100">
                       <i className={group.icon} />
                     </span>
-                    <div className="min-w-0 flex-1">
+                    <div className="skills-group-copy min-w-0 flex-1">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <h3 className="text-lg font-semibold text-slate-950">
                           {group.title}
                         </h3>
-                        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
+                        <span className="skills-count rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
                           {group.items.length} skills
                         </span>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-slate-500">
                         {group.description}
                       </p>
-                      <div className="mt-5 flex flex-wrap gap-2.5">
+                      <div className="skills-chips mt-5 flex flex-wrap gap-2.5">
                         {group.items.map((item) => (
                           <SkillPill key={item}>{item}</SkillPill>
                         ))}
                       </div>
                     </div>
                   </div>
-                </article>
+                </ProjectCard>
               ))}
             </div>
           </div>
@@ -528,13 +525,11 @@ export default function Home() {
               title="Information technology foundation with security specialization"
               description="Current graduate study is aligned with cybersecurity, secure data handling, and network-aware system design."
             />
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="education-grid mt-8 grid gap-7 md:grid-cols-2">
               {education.map((item) => (
-                <article
-                  key={item.school}
-                  className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-8"
-                >
-                  <p className="text-sm font-semibold text-sky-700">
+                <ProjectCard key={item.school} variant="education">
+                  <span className="education-emblem" aria-hidden="true"><i className="pi pi-graduation-cap" /></span>
+                  <p className="education-date text-sm font-semibold text-sky-700">
                     {item.date}
                   </p>
                   <h3 className="mt-2 text-lg font-semibold text-slate-950 sm:text-xl">
@@ -544,34 +539,21 @@ export default function Home() {
                     {item.degree}
                   </p>
                   {item.note ? (
-                    <p className="mt-3 text-sm font-semibold text-slate-500">
+                    <p className="education-gpa mt-3 text-sm font-semibold text-slate-500">
                       {item.note}
                     </p>
                   ) : null}
-                </article>
+                </ProjectCard>
               ))}
             </div>
 
-            <div className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5 shadow-sm sm:p-8">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p className="text-sm font-semibold text-sky-700">
-                    Graduate coursework
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold text-slate-950 sm:text-2xl">
-                    Digital Network and Security study record
-                  </h3>
-                </div>
-                <p className="text-sm font-semibold text-slate-500">
-                  Current cumulative GPA: 3.25
-                </p>
-              </div>
-
+            <details className="coursework-disclosure">
+              <summary><span>Graduate coursework & grades<small>Digital Network and Information Security · GPA 3.25</small></span><span className="disclosure-icon" aria-hidden="true">+</span></summary>
               <div className="mt-6 grid items-stretch gap-4 lg:grid-cols-2">
                 {graduateCoursework.map((semester) => (
                   <article
                     key={semester.term}
-                    className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5"
+                    className="semester-panel flex h-full flex-col rounded-lg border border-slate-200 bg-white p-4 sm:p-5"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
                       <h4 className="text-base font-semibold text-slate-950">
@@ -583,7 +565,7 @@ export default function Home() {
                       {semester.courses.map((course) => (
                         <article
                           key={course.code}
-                          className="flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-sky-200 hover:bg-white hover:shadow-sm"
+                          className="course-panel flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50 p-4"
                         >
                           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                             <div className="min-w-0">
@@ -606,14 +588,14 @@ export default function Home() {
                   </article>
                 ))}
               </div>
-            </div>
+            </details>
           </div>
         </section>
 
         <section id="contact" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-          <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 text-white shadow-xl shadow-slate-200/70">
-            <div className="grid lg:grid-cols-[1fr_25rem]">
-              <div className="p-5 sm:p-10 lg:p-12">
+          <ProjectCard variant="contact">
+            <div className="contact-panel-grid grid lg:grid-cols-[1fr_25rem]">
+              <div className="contact-copy p-6 sm:p-10 lg:p-12">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:text-sm">
                   Contact
                 </p>
@@ -622,9 +604,9 @@ export default function Home() {
                   workflows.
                 </h2>
                 <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
-                  Available for software developer roles focused on full-stack
-                  web development, enterprise frontend systems, secure backend
-                  services, and production support.
+                  Based in Bangkok, with experience across full-stack web development,
+                  enterprise frontend systems, backend services, and production support.
+                  Contact me to discuss your team and the role.
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -668,19 +650,13 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="border-t border-white/10 bg-white/[0.03] p-5 sm:p-8 lg:border-l lg:border-t-0">
+              <div className="contact-actions border-t border-white/10 p-6 sm:p-8 lg:border-l lg:border-t-0">
                 <div className="grid gap-3">
                   <ContactAction
                     href={`mailto:${contact.email}`}
                     icon="pi pi-send"
                     title="Email me"
                     description="Start a conversation"
-                  />
-                  <ContactAction
-                    href="/thirapong-pinkaew-resume.pdf"
-                    icon="pi pi-download"
-                    title="Download Resume"
-                    description="One-page summary"
                   />
                   <ContactAction
                     href="/cv-thirapong-pinkaew.pdf"
@@ -700,47 +676,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </ProjectCard>
         </section>
       </main>
     </div>
-  );
-}
-
-function HeroAction({
-  href,
-  icon,
-  label,
-  variant = "secondary",
-  external = false,
-}: {
-  href: string;
-  icon: string;
-  label: string;
-  variant?: "primary" | "secondary";
-  external?: boolean;
-}) {
-  const classes =
-    variant === "primary"
-      ? "border-slate-950 bg-slate-950 text-white shadow-lg shadow-slate-200 hover:-translate-y-0.5 hover:bg-slate-800"
-      : "border-slate-200 bg-white text-slate-800 shadow-sm hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-800 hover:shadow-md";
-  const iconClasses =
-    variant === "primary" ? "bg-white/15" : "bg-slate-100 group-hover:bg-white";
-
-  return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      className={`group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl border px-5 py-3 text-sm font-semibold transition sm:w-auto ${classes}`}
-    >
-      <span
-        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base transition ${iconClasses}`}
-      >
-        <i className={icon} />
-      </span>
-      <span>{label}</span>
-    </a>
   );
 }
 
@@ -758,6 +697,7 @@ function ContactAction({
   return (
     <a
       href={href}
+      download={href.endsWith(".pdf") ? true : undefined}
       className="group rounded-xl border border-white/10 bg-white/[0.05] p-4 transition hover:-translate-y-0.5 hover:border-cyan-300/50 hover:bg-white/[0.08] hover:shadow-lg hover:shadow-black/20 sm:p-5"
     >
       <div className="flex items-center gap-3 sm:gap-4">
@@ -792,14 +732,6 @@ function SectionHeading({
       </h2>
       <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">{description}</p>
     </div>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 sm:text-sm">
-      {children}
-    </span>
   );
 }
 
