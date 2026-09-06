@@ -1,19 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import type { Track } from "@/components/ui/scroll-locked-video-hero";
 import PortraitHero from "./portrait-hero";
 import ProjectCard from "./project-card";
 
 import { Timeline } from "primereact/timeline";
-
-const MusicHero = dynamic(
-  () => import("@/components/ui/scroll-locked-video-hero"),
-  {
-    ssr: false,
-    loading: () => <div className="interactive-lab-loading">Loading interactive lab…</div>,
-  },
-);
 
 const contact = {
   email: "thirapongp7@gmail.com",
@@ -22,21 +12,11 @@ const contact = {
 };
 
 const navItems = [
-  ["Interactive Lab", "#interactive-lab"],
   ["Projects", "#projects"],
   ["Experience", "#experience"],
   ["Skills", "#skills"],
   ["Education", "#education"],
   ["Contact", "#contact"],
-];
-
-const showcaseTracks: Track[] = [
-  { id: "ascend", title: "Ascend Money Services", artist: "Kotlin · Spring · Grafana", colorA: "#64c8ff", colorB: "#075985" },
-  { id: "one31", title: "ONE 31 Release", artist: "125 UAT defects resolved", colorA: "#f59e7b", colorB: "#9a3412" },
-  { id: "ktam", title: "KTAM Shared Libraries", artist: "Angular · TypeScript · 1,500+ modules", colorA: "#67e8f9", colorB: "#155e75" },
-  { id: "ktb-cem", title: "KTB Customer Experience", artist: "Angular · Spring Boot · PostgreSQL", colorA: "#93c5fd", colorB: "#1e3a8a" },
-  { id: "encryption", title: "Data Encryption Support", artist: "Spring Batch · AES-256", colorA: "#fbbf74", colorB: "#92400e" },
-  { id: "mobile", title: "Puean Tae Ngern Duan", artist: "React Native · .NET · Multi-platform", colorA: "#5eead4", colorB: "#115e59" },
 ];
 
 const highlights = [
@@ -371,26 +351,6 @@ export default function Home() {
         <div className="profile-highlights">
           {highlights.map((item) => <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>)}
         </div>
-
-        <section id="interactive-lab" className="interactive-lab-section">
-          <div className="interactive-lab-heading">
-            <div>
-              <p>Interactive Lab / 01</p>
-              <h2>Systems in motion.</h2>
-            </div>
-            <p>Scroll over the interface or use the controls to explore selected work as an interactive system.</p>
-          </div>
-          <div className="interactive-lab-frame">
-            <MusicHero
-              title="ENGINEERED FOR MOTION"
-              tracks={showcaseTracks}
-              signature={false}
-              sound={false}
-              fullBleed={false}
-              className="portfolio-music-hero"
-            />
-          </div>
-        </section>
 
         <section id="projects" className="border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">

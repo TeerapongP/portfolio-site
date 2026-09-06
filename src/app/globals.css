@@ -418,15 +418,3 @@ html {
 @media (max-width: 900px) { .hero-tech-cloud { opacity: .6; } .tech-angular, .tech-kotlin { left: 2%; } .tech-spring, .tech-next { right: 2%; } }
 @media (max-width: 700px) { .hero-tech-cloud { display: none; } .hero-aurora { opacity: .72; } }
 @media (prefers-reduced-motion: reduce) { .hero-aurora span, .shimmer-action .shimmer-sweep { animation: none; } }
-
-/* Interactive component showcase adapted from the supplied component. */
-.interactive-lab-section { position: relative; padding: 88px max(4vw, 24px); overflow: hidden; background: #07111f; color: #fff; scroll-margin-top: 92px; }
-.interactive-lab-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent); }
-.interactive-lab-heading { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: end; gap: 36px; max-width: 1280px; margin: 0 auto 34px; }
-.interactive-lab-heading > div > p { margin-bottom: 14px; color: #74b9f1; font: 12px var(--font-geist-mono), monospace; letter-spacing: .16em; text-transform: uppercase; }
-.interactive-lab-heading h2 { font-size: clamp(42px, 6vw, 76px); font-weight: 500; line-height: .98; letter-spacing: -.06em; }
-.interactive-lab-heading > p { max-width: 420px; color: #adbed1; font-size: 15px; line-height: 1.8; }
-.interactive-lab-frame { position: relative; z-index: 2; max-width: 1280px; margin: auto; overflow: hidden; border: 1px solid #87ccf638; border-radius: 28px; box-shadow: 0 0 0 1px #ffffff0a, 0 38px 90px -48px #49b8ff99; }
-.portfolio-music-hero { min-height: 680px; }
-.interactive-lab-loading { min-height: 680px; display: grid; place-items: center; border-radius: 28px; background: #05060a; color: #8fb2cc; font: 12px var(--font-geist-mono), monospace; letter-spacing: .12em; }
-@media (max-width: 700px) { .interactive-lab-section { padding: 64px 0; } .interactive-lab-heading { display: block; padding-inline: 22px; } .interactive-lab-heading > p { margin-top: 20px; } .interactive-lab-frame { border-radius: 0; border-inline: 0; } .portfolio-music-hero, .interactive-lab-loading { min-height: 700px; } }
