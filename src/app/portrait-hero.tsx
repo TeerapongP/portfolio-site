@@ -66,6 +66,17 @@ export default function PortraitHero() {
     <section ref={stage} className="portrait-hero text-hero" data-paused={paused} aria-labelledby="hero-title">
       <div className="stage-grid" aria-hidden="true" />
       <div className="stage-atmosphere" aria-hidden="true" />
+      <div className="hero-aurora" aria-hidden="true">
+        <span className="aurora-one" />
+        <span className="aurora-two" />
+        <span className="aurora-three" />
+      </div>
+      <div className="hero-tech-cloud" aria-hidden="true">
+        <span className="tech-float tech-angular">Angular</span>
+        <span className="tech-float tech-spring">Spring</span>
+        <span className="tech-float tech-kotlin">Kotlin</span>
+        <span className="tech-float tech-next">Next.js</span>
+      </div>
       <div className="hero-edition"><span>INDEPENDENT THINKING. ENGINEERED SYSTEMS.</span><span>BANGKOK, THAILAND · 13.75° N</span></div>
       <div className="hero-composition">
         <div className="hero-copy">
@@ -75,7 +86,7 @@ export default function PortraitHero() {
           <p className="hero-tech">Angular / React · Kotlin / Java · .NET</p>
           <p className="hero-current">Currently Software Engineer at <a href="#experience">Ascend Money ↗</a></p>
           <div className="hero-links">
-            <a className="hero-primary" href="#projects">View selected work <span aria-hidden="true">↗</span></a>
+            <a className="hero-primary shimmer-action" href="#projects"><span className="shimmer-sweep" aria-hidden="true" />View selected work <span aria-hidden="true">↗</span></a>
             <a className="hero-resume" href="/cv-thirapong-pinkaew.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
           </div>
           <p className="hero-disciplines">FULL STACK <span>/</span> ENTERPRISE <span>/</span> SECURITY</p>

@@ -17,6 +17,8 @@ export default function ProjectCard({ children, variant = "project" }: { childre
       y += (targetY - y) * 0.1;
       node.style.setProperty("--card-x", x.toFixed(4));
       node.style.setProperty("--card-y", y.toFixed(4));
+      node.style.setProperty("--spot-x", `${((x + 1) * 50).toFixed(1)}%`);
+      node.style.setProperty("--spot-y", `${((y + 1) * 50).toFixed(1)}%`);
       if (Math.abs(targetX - x) + Math.abs(targetY - y) > 0.002) {
         frame = requestAnimationFrame(draw);
       } else frame = 0;
@@ -37,6 +39,8 @@ export default function ProjectCard({ children, variant = "project" }: { childre
       bounds = null;
       node.style.setProperty("--card-x", "0");
       node.style.setProperty("--card-y", "0");
+      node.style.setProperty("--spot-x", "50%");
+      node.style.setProperty("--spot-y", "50%");
     };
     node.addEventListener("pointerenter", enter);
     node.addEventListener("pointermove", move, { passive: true });
